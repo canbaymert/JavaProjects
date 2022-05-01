@@ -3,8 +3,9 @@ package _02_javaBank;
 import java.util.*;
 
 
-import static _02_javaBank._03_database.getCustomerData;
-import static _02_javaBank._03_database.updateUserData;
+import static _02_javaBank._02_login.bankStart;
+import static _02_javaBank._02_login.loginCustomerNumber;
+import static _02_javaBank._03_database.*;
 import static _02_javaBank._04_menu.*;
 
 
@@ -140,6 +141,46 @@ public class _03_transactions {
         System.out.println("IBAN accepted.");
         return input;
     }
+
+    public static void changePassword() {
+        System.out.print("Please enter your current password : ");
+        String password = scan.nextLine();
+        Set<Map.Entry<Integer, String>> customersSet = customers.entrySet();
+        for (Map.Entry<Integer, String> each : customersSet) {
+            if (loginCustomerNumber == each.getKey()) {
+                String[] eachValue = each.getValue().split(", ");
+                if (eachValue[5].equals(password)) {
+                    setPassword();
+                    updateUserData();
+                    System.out.println("Password has been changed successfully.");
+                    mainMenu();
+                } else {
+                    System.out.println("Wrong password.\nTry again : 0\nReturn to main menu : 1");
+                    System.out.print("Your choice : ");
+                    int choice;
+                    while (true) {
+                        try {
+                            choice = Integer.parseInt(scan.nextLine());
+                            if (choice == 0 || choice == 1) break;
+                            else {
+                                System.out.println("Invalid entry\nTry again : 0\nReturn to main menu : 1");
+                                System.out.print("Your choice : ");
+                            }
+                        } catch (Exception inputMismatchException) {
+                            System.out.println("Invalid entry\nTry again : 0\nReturn to main menu : 1");
+                            System.out.print("Your choice : ");
+                        }
+                    }
+                    if (choice == 0) {
+                        changePassword();
+                    } else {
+                        bankStart();
+                    }
+                }
+            }
+        }
+    }
 }
+
 
 

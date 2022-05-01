@@ -2,7 +2,6 @@ package _02_javaBank;
 
 import java.util.Scanner;
 
-import static _02_javaBank._03_database.changePassword;
 import static _02_javaBank._03_transactions.*;
 
 public class _04_menu {

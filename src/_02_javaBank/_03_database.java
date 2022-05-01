@@ -50,7 +50,7 @@ public class _03_database {
             System.out.print("Name : ");
             name = scan.nextLine();
             String temp = name;
-            temp = temp.replaceAll("[a-zA-Z]", "");
+            temp = temp.replaceAll("[a-zA-ZüÜıİÖöğĞşŞçÇ]", "");
             if (!temp.equals("")) System.out.println("Invalid information. Please try again.");
             else break;
         } while (true);
@@ -58,37 +58,45 @@ public class _03_database {
             System.out.print("Surname : ");
             surname = scan.nextLine();
             String temp = surname;
-            temp = temp.replaceAll("[a-zA-Z]", "");
+            temp = temp.replaceAll("[a-zA-ZüÜıİÖöğĞşŞçÇ]", "");
             if (!temp.equals("")) System.out.println("Invalid information. Please try again.");
             else break;
         } while (true);
         do {
-            System.out.print("Birth Year : ");
-            bYear = scan.nextLine();
-            String temp = bYear;
-            temp = temp.replaceAll("\\d", "");
-            if (!temp.equals("")) System.out.println("Invalid information. Please try again.");
-            else if (Integer.parseInt(bYear) > 2020 || Integer.parseInt(bYear) < 1800) {
+            try {
+                System.out.print("Birth Year : ");
+                bYear = scan.nextLine();
+                String temp = bYear;
+                temp = temp.replaceAll("\\d", "");
+                if (!temp.equals("")) System.out.println("Invalid information. Please try again.");
+                else if (Integer.parseInt(bYear) > 2020 || Integer.parseInt(bYear) < 1800) {
+                    System.out.println("Invalid information. Please try again.");
+                } else break;
+            } catch (NumberFormatException e) {
                 System.out.println("Invalid information. Please try again.");
-            } else break;
+            }
         } while (true);
         do {
             System.out.print("Country : ");
             country = scan.nextLine();
             String temp = country;
-            temp = temp.replaceAll("[a-zA-Z]", "");
+            temp = temp.replaceAll("[a-zA-ZüÜıİÖöğĞşŞçÇ]", "");
             if (!temp.equals("")) System.out.println("Invalid information. Please try again.");
             else break;
         } while (true);
 
         do {
-            System.out.print("Amount that you wish to deposit (€) : ");
-            balance = scan.nextLine();
-            String temp = balance;
-            temp = temp.replaceAll("\\d", "");
-            if (!temp.equals("")) System.out.println("Invalid information. Please try again.");
-            else if (Integer.parseInt(balance) < 0) System.out.println("Invalid information. Please try again.");
-            else break;
+            try {
+                System.out.print("Amount that you wish to deposit (€) : ");
+                balance = scan.nextLine();
+                String temp = balance;
+                temp = temp.replaceAll("\\d", "");
+                if (!temp.equals("")) System.out.println("Invalid information. Please try again.");
+                else if (Integer.parseInt(balance) < 0) System.out.println("Invalid information. Please try again.");
+                else break;
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid information. Please try again.");
+            }
         } while (true);
         password = setPassword();
 
@@ -136,44 +144,6 @@ public class _03_database {
         return password;
     }
 
-    public static void changePassword() {
-        System.out.print("Please enter your current password : ");
-        String password = scan.nextLine();
-        Set<Map.Entry<Integer, String>> customersSet = customers.entrySet();
-        for (Map.Entry<Integer, String> each : customersSet) {
-            if (loginCustomerNumber == each.getKey()) {
-                String[] eachValue = each.getValue().split(", ");
-                if (eachValue[5].equals(password)) {
-                    setPassword();
-                    updateUserData();
-                    System.out.println("Password has been changed successfully.");
-                    mainMenu();
-                } else {
-                    System.out.println("Wrong password.\nTry again : 0\nReturn to main menu : 1");
-                    System.out.print("Your choice : ");
-                    int choice;
-                    while (true) {
-                        try {
-                            choice = Integer.parseInt(scan.nextLine());
-                            if (choice == 0 || choice == 1) break;
-                            else {
-                                System.out.println("Invalid entry\nTry again : 0\nReturn to main menu : 1");
-                                System.out.print("Your choice : ");
-                            }
-                        } catch (Exception inputMismatchException) {
-                            System.out.println("Invalid entry\nTry again : 0\nReturn to main menu : 1");
-                            System.out.print("Your choice : ");
-                        }
-                    }
-                    if (choice == 0) {
-                        changePassword();
-                    } else {
-                        bankStart();
-                    }
-                }
-            }
-        }
-    }
 
     public static void askPassword() {
         System.out.print("Please enter your password : ");

@@ -8,7 +8,8 @@ public class _04_menu {
     public static void mainMenu() {
 
         System.out.println("Please select a transaction.");
-        System.out.println("1-Send Money\n2-Withdraw Money\n3-Deposit Money\n4-Check your account balance\n5-View customer data\n6-Change password\n7-Exit");
+        System.out.println("1-Send Money\n2-Withdraw Money\n3-Deposit Money\n4-Check your account balance" +
+                "\n5-View customer data\n6-Change password\n7-Exit");
         System.out.print("Your choice : ");
         int choice;
         while (true) {

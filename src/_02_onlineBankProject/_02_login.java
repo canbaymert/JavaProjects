@@ -7,7 +7,6 @@ import static _02_onlineBankProject._03_database.*;
 public class _02_login {
     static Scanner scan = new Scanner(System.in);
 
-
     public static void bankStart() {
 
         System.out.println("Login with your customer number : 0\nRegister new user : 1");

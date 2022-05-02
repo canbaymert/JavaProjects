@@ -6,7 +6,6 @@ import static _02_onlineBankProject._02_login.bankStart;
 import static _02_onlineBankProject._04_menu.mainMenu;
 
 
-
 public class _03_database {
     public static Scanner scan = new Scanner(System.in);
     static Map<Integer, String> customers = new HashMap<>();
@@ -105,7 +104,8 @@ public class _03_database {
     }
 
     public static void updateUserData() {
-        String updatedUserData = getUserName() + ", " + getUserSurname() + ", " + getUserBirthDate() + ", " + getUserCountry()+ ", " + getUserAccountBalance() + ", " + getUserPassword();
+        String updatedUserData = getUserName() + ", " + getUserSurname() + ", " + getUserBirthDate() + ", " +
+                getUserCountry()+ ", " + getUserAccountBalance() + ", " + getUserPassword();
         customers.compute(getLoggedInCustomerNumber(), (key, value) -> updatedUserData);
     }
 
@@ -170,10 +170,9 @@ public class _03_database {
         surname = surname.substring(0, 1).toUpperCase(Locale.ROOT) + surname.substring(1).toLowerCase(Locale.ROOT);
         String newCustomer = name + ", " + surname + ", " + bYear + ", " + country + ", " + balance + ", " + password;
         customers.put(getCustomerNumber(), newCustomer);
-        System.out.println("Registration successful.\nWelcome " + name + " " + surname + "\nYour customer number is : " + getCustomerNumber());
-        int inc=0;
-        inc++;
-        setCustomerNumber(customerNumber+inc);
+        System.out.println("Registration successful.\nWelcome " + name + " " + surname +
+                "\nYour customer number is : " + getCustomerNumber());
+        setCustomerNumber(getCustomerNumber()+1);
         bankStart();
     }
 

@@ -1,7 +1,7 @@
-package _02_onlineBankProject;
+package _03_onlineBankProject;
 
-import static _02_onlineBankProject._02_login.bankStart;
-import static _02_onlineBankProject._03_database.createDatabase;
+import static _03_onlineBankProject._02_login.bankStart;
+import static _03_onlineBankProject._03_database.createDatabase;
 
 public class _01_runner {
     public static void main(String[] args) {

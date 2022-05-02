@@ -7,10 +7,10 @@ public class C04_flightProject {
     Passenger is at City A, the distances to 3 different cities are: 500km to City B, 700km to City C, 900 km to City D.
     Price calculation:
     Price per km : 0.10$
-    %50 discount if age is below 12,
-    %10 discount if age is between 12 and 24,
-    %30 discount if age is above 65.
-    %20 discount if it's a return ticket.
+    %50 discount if age is below 12
+    %10 discount if age is between 12 and 24
+    %30 discount if age is above 65
+    %20 discount if it's a return ticket
     */
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);

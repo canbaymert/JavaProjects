@@ -12,19 +12,15 @@ import static _02_javaBank._04_menu.*;
 public class _03_transactions {
 
     public static Scanner scan = new Scanner(System.in);
-    static double userAccountBalance;
-    static int userBirthDate;
-    static String userName, userSurname, userCountry, userPassword;
-
 
     public static void sendMoney(double sendingAmount) {
         getCustomerData();
-        System.out.println("Welcome : " + userName + " " + userSurname + "\nYour current balance = " + userAccountBalance + " €");
-        if (sendingAmount <= userAccountBalance) {
+        System.out.println("Welcome : " + getUserName() + " " + getUserSurname() + "\nYour current balance = " + getUserAccountBalance() + " €");
+        if (sendingAmount <= getUserAccountBalance()) {
             String iban = getIban();
-            userAccountBalance -= sendingAmount;
+            setUserAccountBalance(getUserAccountBalance()-sendingAmount);
             System.out.println(sendingAmount + " € has been sent to " + iban + " successfully.");
-            System.out.println("New balance of your account : " + userAccountBalance);
+            System.out.println("New balance of your account : " + getUserAccountBalance());
             updateUserData();
         } else {
             System.out.println("You can't send a bigger amount than your account balance");
@@ -47,19 +43,22 @@ public class _03_transactions {
             System.out.print("Your choice : ");
             choice = scan.nextLine().toUpperCase(Locale.ROOT).charAt(0);
             if (choice == 'Y') mainMenu();
-            else if (choice == 'N') System.out.println("Have good a day");
+            else if (choice == 'N') {
+                System.out.println("Have good a day");
+                break;
+            }
             else System.out.println("Wrong entry");
         }
-        while (choice != 'Y' || choice != 'N');
+        while (true);
     }
 
     public static void withdrawMoney(double withdrawAmount) {
         getCustomerData();
-        System.out.println("Welcome : " + userName + " " + userSurname + "\nYour current balance = " + userAccountBalance + " €");
-        if (withdrawAmount <= userAccountBalance) {
-            userAccountBalance -= withdrawAmount;
+        System.out.println("Welcome : " + getUserName() + " " + getUserSurname() + "\nYour current balance = " + getUserAccountBalance() + " €");
+        if (withdrawAmount <= getUserAccountBalance()) {
+            setUserAccountBalance(getUserAccountBalance()-withdrawAmount);
             System.out.println(withdrawAmount + " € has been withdrawn successfully.");
-            System.out.println("New balance of your account : " + userAccountBalance);
+            System.out.println("New balance of your account : " + getUserAccountBalance());
             updateUserData();
         } else {
             System.out.println("You can't send bigger amount than your account balance");
@@ -82,18 +81,21 @@ public class _03_transactions {
             System.out.print("Your choice : ");
             choice = scan.nextLine().toUpperCase(Locale.ROOT).charAt(0);
             if (choice == 'Y') mainMenu();
-            else if (choice == 'N') System.out.println("Have good a day");
+            else if (choice == 'N') {
+                System.out.println("Have good a day");
+                break;
+            }
             else System.out.println("Wrong entry");
         }
-        while (choice != 'Y' || choice != 'N');
+        while (true);
     }
 
     public static void depositMoney(double depositAmount) {
         getCustomerData();
-        System.out.println("Welcome : " + userName + " " + userSurname + "\nYour current balance = " + userAccountBalance + " €");
-        userAccountBalance += depositAmount;
+        System.out.println("Welcome : " + getUserName() + " " + getUserSurname() + "\nYour current balance = " + getUserAccountBalance() + " €");
+        setUserAccountBalance(getUserAccountBalance()-depositAmount);
         System.out.println(depositAmount + " € has been deposited successfully.");
-        System.out.println("New balance of your account : " + userAccountBalance);
+        System.out.println("New balance of your account : " + getUserAccountBalance());
         updateUserData();
 
         char choice;
@@ -102,14 +104,17 @@ public class _03_transactions {
             System.out.print("Your choice : ");
             choice = scan.nextLine().toUpperCase(Locale.ROOT).charAt(0);
             if (choice == 'Y') mainMenu();
-            else if (choice == 'N') System.out.println("Have good a day");
+            else if (choice == 'N'){
+                System.out.println("Have good a day");
+                break;
+            }
             else System.out.println("Wrong entry");
         }
-        while (choice != 'Y' || choice != 'N');
+        while (true);
     }
 
     public static void checkuserAccountBalance() {
-        System.out.println("Welcome : " + userName + " " + userSurname + "\nYour current balance = " + userAccountBalance + " €");
+        System.out.println("Welcome : " + getUserName() + " " + getUserSurname() + "\nYour current balance = " + getUserAccountBalance() + " €");
 
         char choice;
         do {
@@ -117,10 +122,13 @@ public class _03_transactions {
             System.out.print("Your choice : ");
             choice = scan.nextLine().toUpperCase(Locale.ROOT).charAt(0);
             if (choice == 'Y') mainMenu();
-            else if (choice == 'N') System.out.println("Have good a day");
+            else if (choice == 'N') {
+                System.out.println("Have good a day");
+                break;
+            }
             else System.out.println("Wrong entry");
         }
-        while (choice != 'Y' || choice != 'N');
+        while (true);
     }
 
     public static String getIban() {

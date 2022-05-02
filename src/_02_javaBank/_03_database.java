@@ -5,14 +5,52 @@ import java.util.*;
 import static _02_javaBank._02_login.bankStart;
 import static _02_javaBank._02_login.loginCustomerNumber;
 import static _02_javaBank._04_menu.mainMenu;
-import static _02_javaBank._03_transactions.*;
+
 
 
 public class _03_database {
     public static Scanner scan = new Scanner(System.in);
     static Map<Integer, String> customers = new HashMap<>();
-    public static int customerNumber = 10000006;
+    private static int customerNumber = 10000006;
+    private static String userName, userSurname, userCountry, userPassword;
+    private static double userAccountBalance;
+    private static int userBirthDate;
 
+    public static int getCustomerNumber() {
+        return customerNumber;
+    }
+
+    public static void setUserAccountBalance(double userAccountBalance) {
+        _03_database.userAccountBalance = userAccountBalance;
+    }
+
+    public static double getUserAccountBalance() {
+        return userAccountBalance;
+    }
+
+    public static int getUserBirthDate() {
+        return userBirthDate;
+    }
+
+    public static String getUserName() {
+        return userName;
+    }
+
+    public static String getUserSurname() {
+        return userSurname;
+    }
+
+    public static String getUserCountry() {
+        return userCountry;
+    }
+
+    public static String getUserPassword() {
+        return userPassword;
+    }
+
+    private static void setCustomerNumber(int customerNumber) {
+        _03_database.customerNumber = customerNumber;
+    }
 
     public static void createDatabase() {
         customers.put(10000001, "Brad, Pitt, 1963, USA, 6857523, Brad1963.");
@@ -103,10 +141,12 @@ public class _03_database {
         name = name.substring(0, 1).toUpperCase(Locale.ROOT) + name.substring(1).toLowerCase(Locale.ROOT);
         surname = surname.substring(0, 1).toUpperCase(Locale.ROOT) + surname.substring(1).toLowerCase(Locale.ROOT);
         String newCustomer = name + ", " + surname + ", " + bYear + ", " + country + ", " + balance + ", " + password;
-        customers.put(customerNumber, newCustomer);
+        customers.put(getCustomerNumber(), newCustomer);
         System.out.println("Registration successful.\nWelcome " + name + " " + surname + "\nYour customer number is : " + customerNumber);
+        int inc=0;
+        inc++;
+        setCustomerNumber(customerNumber+inc);
         bankStart();
-        customerNumber++;
     }
 
     public static String setPassword() {
@@ -119,12 +159,12 @@ public class _03_database {
                 System.out.print("Create a new password : ");
                 continue;
             }
-            if (!password.matches(".*[A-Z].*")) {
+            if (!password.matches(".*[A-ZİÖÜÇĞŞ].*")) {
                 System.out.println("Your password should contain at least 1 uppercase character");
                 System.out.print("Create a new password : ");
                 continue;
             }
-            if (!password.matches(".*[a-z].*")) {
+            if (!password.matches(".*[a-zıöüçğş].*")) {
                 System.out.println("Your password should contain at least 1 lowercase character");
                 System.out.print("Create a new password : ");
                 continue;

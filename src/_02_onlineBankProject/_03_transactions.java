@@ -4,7 +4,6 @@ import java.util.*;
 
 
 import static _02_onlineBankProject._02_login.bankStart;
-import static _02_onlineBankProject._02_login.loginCustomerNumber;
 import static _02_onlineBankProject._03_database.*;
 import static _02_onlineBankProject._04_menu.*;
 
@@ -14,7 +13,6 @@ public class _03_transactions {
     public static Scanner scan = new Scanner(System.in);
 
     public static void sendMoney(double sendingAmount) {
-        getCustomerData();
         System.out.println("Welcome : " + getUserName() + " " + getUserSurname() + "\nYour current balance = " + getUserAccountBalance() + " €");
         if (sendingAmount <= getUserAccountBalance()) {
             String iban = getIban();
@@ -53,7 +51,6 @@ public class _03_transactions {
     }
 
     public static void withdrawMoney(double withdrawAmount) {
-        getCustomerData();
         System.out.println("Welcome : " + getUserName() + " " + getUserSurname() + "\nYour current balance = " + getUserAccountBalance() + " €");
         if (withdrawAmount <= getUserAccountBalance()) {
             setUserAccountBalance(getUserAccountBalance()-withdrawAmount);
@@ -91,7 +88,6 @@ public class _03_transactions {
     }
 
     public static void depositMoney(double depositAmount) {
-        getCustomerData();
         System.out.println("Welcome : " + getUserName() + " " + getUserSurname() + "\nYour current balance = " + getUserAccountBalance() + " €");
         setUserAccountBalance(getUserAccountBalance()-depositAmount);
         System.out.println(depositAmount + " € has been deposited successfully.");
@@ -130,6 +126,29 @@ public class _03_transactions {
         }
         while (true);
     }
+    public static void viewCustomerData() {
+        System.out.println("Customer Name : " + getUserName() + "\nCustomer Surname : " + getUserSurname() +
+                "\nCustomer Number : " + getLoggedInCustomerNumber() + "\nCustomer Birth Date : " + getUserBirthDate() +
+                "\nCustomer Country : " + getUserCountry() + "\nCustomer Current Balance = " + getUserAccountBalance() + " €");
+        char choice;
+        do {
+            System.out.println("Would you like to proceed any other transaction?\nYes : Y\nNo : N");
+            System.out.print("Your choice : ");
+            choice = scan.nextLine().toUpperCase(Locale.ROOT).charAt(0);
+            if (choice == 'Y') mainMenu();
+            else if (choice == 'N') {
+                System.out.println("Have good a day");
+                break;
+            }
+            else System.out.println("Wrong entry");
+        }
+        while (true);
+    }
+
+    public static void exit() {
+        System.out.println("Have a good day.");
+        System.exit(0);
+    }
 
     public static String getIban() {
         String input = "";
@@ -155,7 +174,7 @@ public class _03_transactions {
         String password = scan.nextLine();
         Set<Map.Entry<Integer, String>> customersSet = customers.entrySet();
         for (Map.Entry<Integer, String> each : customersSet) {
-            if (loginCustomerNumber == each.getKey()) {
+            if (getLoggedInCustomerNumber() == each.getKey()) {
                 String[] eachValue = each.getValue().split(", ");
                 if (eachValue[5].equals(password)) {
                     setPassword();

@@ -3,7 +3,6 @@ package _02_onlineBankProject;
 import java.util.*;
 
 import static _02_onlineBankProject._02_login.bankStart;
-import static _02_onlineBankProject._02_login.loginCustomerNumber;
 import static _02_onlineBankProject._04_menu.mainMenu;
 
 
@@ -11,10 +10,38 @@ import static _02_onlineBankProject._04_menu.mainMenu;
 public class _03_database {
     public static Scanner scan = new Scanner(System.in);
     static Map<Integer, String> customers = new HashMap<>();
-    private static int customerNumber = 10000006;
+    private static int userBirthDate,loggedInCustomerNumber,customerNumber = 10000006;
     private static String userName, userSurname, userCountry, userPassword;
     private static double userAccountBalance;
-    private static int userBirthDate;
+
+
+    public static int getLoggedInCustomerNumber() {
+        return loggedInCustomerNumber;
+    }
+
+    public static void setUserPassword(String userPassword) {
+        _03_database.userPassword = userPassword;
+    }
+
+    public static void setUserBirthDate(int userBirthDate) {
+        _03_database.userBirthDate = userBirthDate;
+    }
+
+    public static void setUserName(String userName) {
+        _03_database.userName = userName;
+    }
+
+    public static void setUserSurname(String userSurname) {
+        _03_database.userSurname = userSurname;
+    }
+
+    public static void setUserCountry(String userCountry) {
+        _03_database.userCountry = userCountry;
+    }
+
+    public static void setLoggedInCustomerNumber(int loggedInCustomerNumber) {
+        _03_database.loggedInCustomerNumber = loggedInCustomerNumber;
+    }
 
     public static int getCustomerNumber() {
         return customerNumber;
@@ -60,25 +87,26 @@ public class _03_database {
         customers.put(10000005, "Vincent, Cassel, 1966, France, 5325405, VC1234!.*");
     }
 
-    public static void getCustomerData() {
+    public static void initializeCustomerData() {
         Set<Map.Entry<Integer, String>> customersSet = customers.entrySet();
         String[] customerData = new String[6];
         for (Map.Entry<Integer, String> each : customersSet) {
-            if (loginCustomerNumber == each.getKey()) {
+            if (getLoggedInCustomerNumber() == each.getKey()) {
                 customerData = each.getValue().split(", ");
             }
         }
-        userName = customerData[0];
-        userSurname = customerData[1];
-        userBirthDate = Integer.parseInt(customerData[2]);
-        userCountry = customerData[3];
-        userAccountBalance = Double.parseDouble(customerData[4]);
-        userPassword = customerData[5];
+        setUserName(customerData[0]);;
+        setUserSurname(customerData[1]);
+        setUserBirthDate(Integer.parseInt(customerData[2]));
+        setUserCountry(customerData[3]);
+        setUserAccountBalance(Double.parseDouble(customerData[4]));
+        setUserPassword(customerData[5]);
+
     }
 
     public static void updateUserData() {
-        String updatedUserData = userName + ", " + userSurname + ", " + userBirthDate + ", " + userCountry + ", " + userAccountBalance + ", " + userPassword;
-        customers.compute(loginCustomerNumber, (key, value) -> updatedUserData);
+        String updatedUserData = getUserName() + ", " + getUserSurname() + ", " + getUserBirthDate() + ", " + getUserCountry()+ ", " + getUserAccountBalance() + ", " + getUserPassword();
+        customers.compute(getLoggedInCustomerNumber(), (key, value) -> updatedUserData);
     }
 
     public static void registeruser() {
@@ -142,7 +170,7 @@ public class _03_database {
         surname = surname.substring(0, 1).toUpperCase(Locale.ROOT) + surname.substring(1).toLowerCase(Locale.ROOT);
         String newCustomer = name + ", " + surname + ", " + bYear + ", " + country + ", " + balance + ", " + password;
         customers.put(getCustomerNumber(), newCustomer);
-        System.out.println("Registration successful.\nWelcome " + name + " " + surname + "\nYour customer number is : " + customerNumber);
+        System.out.println("Registration successful.\nWelcome " + name + " " + surname + "\nYour customer number is : " + getCustomerNumber());
         int inc=0;
         inc++;
         setCustomerNumber(customerNumber+inc);
@@ -190,10 +218,11 @@ public class _03_database {
         String password = scan.nextLine();
         Set<Map.Entry<Integer, String>> customersSet = customers.entrySet();
         for (Map.Entry<Integer, String> each : customersSet) {
-            if (loginCustomerNumber == each.getKey()) {
+            if (getLoggedInCustomerNumber() == each.getKey()) {
                 String[] eachValue = each.getValue().split(", ");
                 if (eachValue[5].equals(password)) {
                     System.out.println("Access Granted.\nWelcome " + eachValue[0] + " " + eachValue[1]);
+                    initializeCustomerData();
                     mainMenu();
                 } else {
                     System.out.println("Wrong password.\nTry again : 0\nReturn to main menu : 1");

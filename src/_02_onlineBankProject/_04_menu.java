@@ -8,7 +8,7 @@ public class _04_menu {
     public static void mainMenu() {
 
         System.out.println("Please select a transaction.");
-        System.out.println("1-Send Money\n2-Withdraw Money\n3-Deposit Money\n4-Check your account balance\n5-Change password\n6-Exit");
+        System.out.println("1-Send Money\n2-Withdraw Money\n3-Deposit Money\n4-Check your account balance\n5-View customer data\n6-Change password\n7-Exit");
         System.out.print("Your choice : ");
         int choice;
         while (true) {
@@ -67,15 +67,16 @@ public class _04_menu {
             checkuserAccountBalance();
 
         } else if (choice == 5) {
-            changePassword();
+            viewCustomerData();
 
         } else if (choice == 6) {
-            System.out.println("Have a good day");
-            System.exit(0);
-
+            changePassword();
+        } else if (choice == 7) {
+            exit();
         } else {
             System.out.println("Wrong entry");
             mainMenu();
         }
     }
 }
+

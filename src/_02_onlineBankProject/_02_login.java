@@ -6,7 +6,7 @@ import static _02_onlineBankProject._03_database.*;
 
 public class _02_login {
     static Scanner scan = new Scanner(System.in);
-    public static int loginCustomerNumber;
+
 
     public static void bankStart() {
 
@@ -37,19 +37,19 @@ public class _02_login {
         System.out.print("Please enter your 8 digits customer number : ");
         while (true) {
             try {
-                loginCustomerNumber = Integer.parseInt(scan.nextLine());
+                setLoggedInCustomerNumber(Integer.parseInt(scan.nextLine()));
                 break;
             } catch (Exception inputMismatchException) {
                 System.out.println("Invalid entry");
                 System.out.print("Please enter your 8 digits customer number : ");
             }
         }
-        if (loginCustomerNumber > 99999999 || loginCustomerNumber < 10000000) {
+        if (getLoggedInCustomerNumber() > 99999999 || getLoggedInCustomerNumber() < 10000000) {
             System.out.println("Invalid customer number, please try again.");
             bankStart();
         }
 
-        if (customers.containsKey(loginCustomerNumber)) {
+        if (customers.containsKey(getLoggedInCustomerNumber())) {
             askPassword();
         } else {
             System.out.println("Invalid customer number, please try again.");

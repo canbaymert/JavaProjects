@@ -1,8 +1,6 @@
-package _02_javaBank;
+package _02_onlineBankProject;
 
-import java.util.Scanner;
-
-import static _02_javaBank._03_transactions.*;
+import static _02_onlineBankProject._03_transactions.*;
 
 public class _04_menu {
 

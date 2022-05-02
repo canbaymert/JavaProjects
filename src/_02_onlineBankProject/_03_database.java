@@ -1,10 +1,10 @@
-package _02_javaBank;
+package _02_onlineBankProject;
 
 import java.util.*;
 
-import static _02_javaBank._02_login.bankStart;
-import static _02_javaBank._02_login.loginCustomerNumber;
-import static _02_javaBank._04_menu.mainMenu;
+import static _02_onlineBankProject._02_login.bankStart;
+import static _02_onlineBankProject._02_login.loginCustomerNumber;
+import static _02_onlineBankProject._04_menu.mainMenu;
 
 
 

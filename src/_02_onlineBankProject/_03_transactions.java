@@ -1,12 +1,12 @@
-package _02_javaBank;
+package _02_onlineBankProject;
 
 import java.util.*;
 
 
-import static _02_javaBank._02_login.bankStart;
-import static _02_javaBank._02_login.loginCustomerNumber;
-import static _02_javaBank._03_database.*;
-import static _02_javaBank._04_menu.*;
+import static _02_onlineBankProject._02_login.bankStart;
+import static _02_onlineBankProject._02_login.loginCustomerNumber;
+import static _02_onlineBankProject._03_database.*;
+import static _02_onlineBankProject._04_menu.*;
 
 
 public class _03_transactions {

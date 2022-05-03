@@ -32,7 +32,7 @@ public class Processes {
         teachers.put(teacher3.getRegistryNumber(), teacher3.toString());
         teachers.put(teacher4.getRegistryNumber(), teacher4.toString());
         teachers.put(teacher5.getRegistryNumber(), teacher5.toString());
-
+        System.out.println();
         System.out.println("================================================");
         System.out.println("======Welcome to School Management System=======");
         System.out.println("================================================");
@@ -40,9 +40,10 @@ public class Processes {
 
 
     public static void mainMenu() {
-
+        System.out.println();
         System.out.println("Please select a transaction.");
         System.out.println("1-Student transactions\n2-Teacher transactions\nQ-Exit");
+        System.out.println();
         System.out.print("Your choice : ");
         String choice = scan.nextLine().toUpperCase();
         switch (choice) {
@@ -65,15 +66,18 @@ public class Processes {
     }
 
     private static void exit() {
+        System.out.println();
         System.out.println("Have a nice day.");
         System.exit(0);
     }
 
     public static void transactions() {
+        System.out.println();
         System.out.println("Welcome to " + memberType + " Transactions Menu");
         System.out.println("Please select a transaction.");
         System.out.println("1-Register " + memberType + "\n2-Find " + memberType + "\n3-List " + memberType + "s" +
                 "\n4-Remove " + memberType + "\n5-Return to main menu\n0-Exit");
+        System.out.println();
         System.out.print("Your choice : ");
 
         String choice = scan.nextLine();
@@ -109,6 +113,7 @@ public class Processes {
     }
 
     private static void register() {
+        System.out.println();
         System.out.println(memberType + " Registration Menu");
         System.out.println("Please enter the asked information to register.");
         String nameSurname, IDNo, branch = null;
@@ -189,11 +194,13 @@ public class Processes {
             Teacher teachernew = new Teacher(nameSurname, IDNo, age, branch, registryNumber);
             teachers.put(teachernew.getRegistryNumber(), teachernew.toString());
         }
+        System.out.println();
         System.out.println("Registration successful.");
         mainMenu();
     }
 
     private static void find() {
+        System.out.println();
         System.out.println(memberType + " Search Menu");
         int counter = 0;
         if (memberType.equals("Student")) {
@@ -212,13 +219,16 @@ public class Processes {
             for (Map.Entry<Integer, String> each : studentsSet) {
                 if (requestedStudentNumber == each.getKey()) {
                     studentData = each.getValue().split(", ");
+                    System.out.println();
                     System.out.println("Data of the student with student number " + requestedStudentNumber);
-                    System.out.println("Name and Surname : "+studentData[0]+"\nID No : "+studentData[1]+"\nAge : "+studentData[2]+"\nClass : "+studentData[3]);
+                    System.out.println("Name and Surname : "+studentData[0]+"\nID No : "+studentData[1]+"\nAge : "
+                            +studentData[2]+"\nClass : "+studentData[3]);
                     counter++;
                 }
             }
             if (counter == 0) {
-                System.out.println("Student with number : " + requestedStudentNumber +
+                System.out.println();
+                System.out.println("Student with student number " + requestedStudentNumber +
                         " could not be found in the database.");
             }
 
@@ -238,13 +248,16 @@ public class Processes {
             for (Map.Entry<Integer, String> each2 : teachersSet) {
                 if (requestedRegistryNumber == each2.getKey()) {
                     teacherData = each2.getValue().split(", ");
+                    System.out.println();
                     System.out.println("Data of the teacher with registry number " + requestedRegistryNumber);
-                    System.out.println("Name and Surname : "+teacherData[0]+"\nID No : "+teacherData[1]+"\nAge : "+teacherData[2]+"\nBranch : "+teacherData[3]);
+                    System.out.println("Name and Surname : "+teacherData[0]+"\nID No : "+teacherData[1]+"\nAge : "
+                            +teacherData[2]+"\nBranch : "+teacherData[3]);
                     counter++;
                 }
             }
             if (counter == 0) {
-                System.out.println("Teacher with number : " + requestedRegistryNumber +
+                System.out.println();
+                System.out.println("Teacher with registry number " + requestedRegistryNumber +
                         " could not be found in the database.");
             }
         }
@@ -252,7 +265,7 @@ public class Processes {
     }
 
     private static void list() {
-
+        System.out.println();
         System.out.println(memberType + " List Menu");
         if (memberType.equals("Student")) {
             for (Map.Entry<Integer, String> each : students.entrySet()) {
@@ -267,6 +280,7 @@ public class Processes {
     }
 
     private static void remove() {
+        System.out.println();
         System.out.println(memberType + " Remove Menu");
         Set<Map.Entry<Integer, String>> studentsSet = students.entrySet();
         Set<Map.Entry<Integer, String>> teachersSet = teachers.entrySet();
@@ -285,11 +299,13 @@ public class Processes {
             for (Map.Entry<Integer, String> each : studentsSet) {
                 if (requestedStudentNumber == each.getKey()) {
                     students.remove(requestedStudentNumber);
+                    System.out.println();
                     System.out.println("Requested " + memberType + " has been removed successfully.");
                     mainMenu();
                 }
             }
-            System.out.println("Student with Student Number : " + requestedStudentNumber +
+            System.out.println();
+            System.out.println("Student with student number " + requestedStudentNumber +
                     " could not be found in the database.");
         } else {
             int requestedRegistryNumber;
@@ -305,11 +321,13 @@ public class Processes {
             for (Map.Entry<Integer, String> each : teachersSet) {
                 if (requestedRegistryNumber == each.getKey()) {
                     teachers.remove(requestedRegistryNumber);
+                    System.out.println();
                     System.out.println("Requested " + memberType + " has been removed successfully.");
                     mainMenu();
                 }
             }
-            System.out.println("Teacher with Registry Number : " + requestedRegistryNumber +
+            System.out.println();
+            System.out.println("Teacher with registry number " + requestedRegistryNumber +
                     " could not be found in the database.");
         }
         mainMenu();

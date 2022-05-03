@@ -1,4 +1,4 @@
-package _03_schoolProject;
+package _03_schoolManagementSystem;
 
 public class Student extends Member {
     private Integer studentNumber;

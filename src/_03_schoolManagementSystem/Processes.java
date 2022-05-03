@@ -1,4 +1,4 @@
-package _03_schoolProject;
+package _03_schoolManagementSystem;
 
 import java.util.*;
 

@@ -14,7 +14,6 @@ public class Transactions {
 
     public static void sendMoney(double sendingAmount) {
         System.out.println();
-        System.out.println("Welcome : " + getUserName() + " " + getUserSurname() + "\nYour current balance = " + getUserAccountBalance() + " €");
         if (sendingAmount <= getUserAccountBalance()) {
             String iban = getIban();
             setUserAccountBalance(getUserAccountBalance()-sendingAmount);
@@ -51,8 +50,7 @@ public class Transactions {
             if (choice == 'Y') mainMenu();
             else if (choice == 'N') {
                 System.out.println();
-                System.out.println("Have good a day");
-                break;
+                exit();
             }
             else System.out.println("Wrong entry");
         }
@@ -61,7 +59,6 @@ public class Transactions {
 
     public static void withdrawMoney(double withdrawAmount) {
         System.out.println();
-        System.out.println("Welcome : " + getUserName() + " " + getUserSurname() + "\nYour current balance = " + getUserAccountBalance() + " €");
         if (withdrawAmount <= getUserAccountBalance()) {
             setUserAccountBalance(getUserAccountBalance()-withdrawAmount);
             System.out.println();
@@ -97,8 +94,7 @@ public class Transactions {
             if (choice == 'Y') mainMenu();
             else if (choice == 'N') {
                 System.out.println();
-                System.out.println("Have good a day");
-                break;
+                exit();
             }
             else System.out.println("Wrong entry");
         }
@@ -107,8 +103,7 @@ public class Transactions {
 
     public static void depositMoney(double depositAmount) {
         System.out.println();
-        System.out.println("Welcome : " + getUserName() + " " + getUserSurname() + "\nYour current balance = " + getUserAccountBalance() + " €");
-        setUserAccountBalance(getUserAccountBalance()-depositAmount);
+        setUserAccountBalance(getUserAccountBalance()+depositAmount);
         System.out.println();
         System.out.println(depositAmount + " € has been deposited successfully.");
         System.out.println("New balance of your account : " + getUserAccountBalance());
@@ -124,8 +119,7 @@ public class Transactions {
             if (choice == 'Y') mainMenu();
             else if (choice == 'N'){
                 System.out.println();
-                System.out.println("Have good a day");
-                break;
+                exit();
             }
             else System.out.println("Wrong entry");
         }
@@ -146,8 +140,7 @@ public class Transactions {
             if (choice == 'Y') mainMenu();
             else if (choice == 'N') {
                 System.out.println();
-                System.out.println("Have good a day");
-                break;
+                exit();
             }
             else System.out.println("Wrong entry");
         }
@@ -168,8 +161,7 @@ public class Transactions {
             if (choice == 'Y') mainMenu();
             else if (choice == 'N') {
                 System.out.println();
-                System.out.println("Have good a day");
-                break;
+                exit();
             }
             else System.out.println("Wrong entry");
         }
@@ -177,13 +169,11 @@ public class Transactions {
     }
 
     public static void exit() {
-        System.out.println();
         System.out.println("Have a good day.");
         System.exit(0);
     }
 
     public static String getIban() {
-        System.out.println();
         String input = "";
         System.out.print("Please enter a Turkish IBAN that you wish to transfer (Starts with TR) : ");
         do {

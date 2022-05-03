@@ -1,6 +1,8 @@
 package _05_onlineBank;
 
+import static _05_onlineBank.Database.*;
 import static _05_onlineBank.Transactions.*;
+import static _05_onlineBank.Transactions.scan;
 
 public class Menu {
 
@@ -27,6 +29,7 @@ public class Menu {
         if (choice == 1) {
             double sendingAmount;
             System.out.println();
+            System.out.println("Welcome : " + getUserName() + " " + getUserSurname() + "\nYour current balance = " + getUserAccountBalance() + " €");
             System.out.print("Please enter the amount which you want to transfer : ");
             while (true) {
                 try {
@@ -41,6 +44,7 @@ public class Menu {
 
         } else if (choice == 2) {
             double withdrawAmount;
+            System.out.println("Welcome : " + getUserName() + " " + getUserSurname() + "\nYour current balance = " + getUserAccountBalance() + " €");
             System.out.println();
             System.out.print("Please enter the amount which you want to withdraw : ");
             while (true) {
@@ -58,6 +62,7 @@ public class Menu {
         } else if (choice == 3) {
             double depositAmount;
             System.out.println();
+            System.out.println("Welcome : " + getUserName() + " " + getUserSurname() + "\nYour current balance = " + getUserAccountBalance() + " €");
             System.out.print("Please enter the amount which you want to deposit : ");
             while (true) {
                 try {

@@ -1,6 +1,6 @@
-package _03_onlineBankProject;
+package _04_onlineBankProject;
 
-import static _03_onlineBankProject._03_transactions.*;
+import static _04_onlineBankProject._03_transactions.*;
 
 public class _04_menu {
 

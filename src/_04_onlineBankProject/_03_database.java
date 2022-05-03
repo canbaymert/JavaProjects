@@ -1,9 +1,9 @@
-package _03_onlineBankProject;
+package _04_onlineBankProject;
 
 import java.util.*;
 
-import static _03_onlineBankProject._02_login.bankStart;
-import static _03_onlineBankProject._04_menu.mainMenu;
+import static _04_onlineBankProject._02_login.bankStart;
+import static _04_onlineBankProject._04_menu.mainMenu;
 
 
 public class _03_database {

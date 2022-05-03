@@ -2,12 +2,12 @@ package _03_schoolProject;
 
 public class Student extends Member {
     private Integer studentNumber;
-    private String studentClass;
+    private Integer studentClass;
 
     public Student() {
     }
 
-    public Student(String nameSurname, String IDNo, Integer age, String studentClass, Integer studentNumber) {
+    public Student(String nameSurname, String IDNo, Integer age, Integer studentClass, Integer studentNumber) {
         super.setNameSurname(nameSurname);
         super.setIDNo(IDNo);
         super.setAge(age);
@@ -19,7 +19,7 @@ public class Student extends Member {
         return studentNumber;
     }
 
-    public String getStudentClass() {
+    public Integer getStudentClass() {
         return studentClass;
     }
 

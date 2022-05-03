@@ -11,11 +11,11 @@ public class Processes {
 
 
     public static void createDatabase() {
-        Student student1 = new Student("Roseanne Fellows", "124141414", 24, "C01", 1001);
-        Student student2 = new Student("Cally Whittaker", "1242141421", 22, "C03", 1002);
-        Student student3 = new Student("Gerald Holland", "5342141419", 19, "C02", 1003);
-        Student student4 = new Student("Ilyas Frame", "2692141490", 19, "C02", 1004);
-        Student student5 = new Student("Martin Donnelly", "2902151620", 18, "C02", 1005);
+        Student student1 = new Student("Roseanne Fellows", "124141414", 24, 1, 1001);
+        Student student2 = new Student("Cally Whittaker", "1242141421", 22, 3, 1002);
+        Student student3 = new Student("Gerald Holland", "5342141419", 19, 2, 1003);
+        Student student4 = new Student("Ilyas Frame", "2692141490", 19, 2, 1004);
+        Student student5 = new Student("Martin Donnelly", "2902151620", 18, 2, 1005);
         students.put(student1.getStudentNumber(), student1.toString());
         students.put(student2.getStudentNumber(), student2.toString());
         students.put(student3.getStudentNumber(), student3.toString());
@@ -72,7 +72,7 @@ public class Processes {
     public static void transactions() {
         System.out.println("Welcome to " + memberType + " Transactions Menu");
         System.out.println("Please select a transaction.");
-        System.out.println("1-Register " + memberType + "\n2-Find " + memberType + "\n3-List " + memberType +"s"+
+        System.out.println("1-Register " + memberType + "\n2-Find " + memberType + "\n3-List " + memberType + "s" +
                 "\n4-Remove " + memberType + "\n5-Return to main menu\n0-Exit");
         System.out.print("Your choice : ");
 
@@ -111,14 +111,15 @@ public class Processes {
     private static void register() {
         System.out.println(memberType + " Registration Menu");
         System.out.println("Please enter the asked information to register.");
-        String nameSurname, IDNo, branch = null, studentClass = null;
-        Integer age, registryNumber = 0, studentNumber = 0;
+        String nameSurname, IDNo, branch = null;
+        Integer age, registryNumber = 0, studentNumber = 0,studentClass = 0;
         do {
             System.out.print("Name and Surname with one blank between them : ");
             nameSurname = scan.nextLine();
             String temp = nameSurname;
             temp = temp.replaceAll("[a-zA-ZüÜıİÖöğĞşŞçÇ ]", "");
             if (!temp.equals("")) System.out.println("Invalid information. Please try again.");
+            if (!nameSurname.contains(" ")) System.out.println("Invalid information. Please try again.");
             else break;
         } while (true);
         do {
@@ -152,13 +153,15 @@ public class Processes {
             } while (true);
 
             do {
-                System.out.print("Student Class : ");
-                studentClass = scan.nextLine();
-                String temp = studentClass;
-                temp = temp.replaceAll("[a-zA-Z0-9üÜıİÖöğĞşŞçÇ]", "");
-                if (!temp.equals("")) System.out.println("Invalid information. Please try again.");
-                else break;
+                try {
+                    System.out.print("Student Class : ");
+                    studentClass = Integer.parseInt(scan.nextLine());
+                    break;
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid information. Please try again.");
+                }
             } while (true);
+
         } else {
             do {
                 try {
@@ -192,8 +195,9 @@ public class Processes {
 
     private static void find() {
         System.out.println(memberType + " Search Menu");
+        int counter = 0;
         if (memberType.equals("Student")) {
-            int requestedStudentNumber = 0;
+            int requestedStudentNumber;
             while (true) {
                 System.out.print("Enter the student number : ");
                 try {
@@ -203,15 +207,21 @@ public class Processes {
                     System.out.println("Wrong entry");
                 }
             }
-            String[] studentData = new String[4];
+            String[] studentData;
             Set<Map.Entry<Integer, String>> studentsSet = students.entrySet();
             for (Map.Entry<Integer, String> each : studentsSet) {
                 if (requestedStudentNumber == each.getKey()) {
                     studentData = each.getValue().split(", ");
                     System.out.println("Data of the student with student number " + requestedStudentNumber);
-                    System.out.println(Arrays.toString(studentData));
+                    System.out.println("Name and Surname : "+studentData[0]+"\nID No : "+studentData[1]+"\nAge : "+studentData[2]+"\nClass : "+studentData[3]);
+                    counter++;
                 }
             }
+            if (counter == 0) {
+                System.out.println("Student with number : " + requestedStudentNumber +
+                        " could not be found in the database.");
+            }
+
         } else {
             int requestedRegistryNumber = 0;
             while (true) {
@@ -229,8 +239,13 @@ public class Processes {
                 if (requestedRegistryNumber == each2.getKey()) {
                     teacherData = each2.getValue().split(", ");
                     System.out.println("Data of the teacher with registry number " + requestedRegistryNumber);
-                    System.out.println(Arrays.toString(teacherData));
+                    System.out.println("Name and Surname : "+teacherData[0]+"\nID No : "+teacherData[1]+"\nAge : "+teacherData[2]+"\nBranch : "+teacherData[3]);
+                    counter++;
                 }
+            }
+            if (counter == 0) {
+                System.out.println("Teacher with number : " + requestedRegistryNumber +
+                        " could not be found in the database.");
             }
         }
         mainMenu();
@@ -244,7 +259,7 @@ public class Processes {
                 System.out.println(each.getKey() + " : " + each.getValue());
             }
         } else {
-            for (Map.Entry<Integer, String> each : students.entrySet()) {
+            for (Map.Entry<Integer, String> each : teachers.entrySet()) {
                 System.out.println(each.getKey() + " : " + each.getValue());
             }
         }
@@ -253,6 +268,8 @@ public class Processes {
 
     private static void remove() {
         System.out.println(memberType + " Remove Menu");
+        Set<Map.Entry<Integer, String>> studentsSet = students.entrySet();
+        Set<Map.Entry<Integer, String>> teachersSet = teachers.entrySet();
 
         if (memberType.equals("Student")) {
             int requestedStudentNumber;
@@ -265,11 +282,15 @@ public class Processes {
                     System.out.println("Wrong entry");
                 }
             }
-            for (Map.Entry<Integer, String> each : students.entrySet()) {
+            for (Map.Entry<Integer, String> each : studentsSet) {
                 if (requestedStudentNumber == each.getKey()) {
                     students.remove(requestedStudentNumber);
+                    System.out.println("Requested " + memberType + " has been removed successfully.");
+                    mainMenu();
                 }
             }
+            System.out.println("Student with Student Number : " + requestedStudentNumber +
+                    " could not be found in the database.");
         } else {
             int requestedRegistryNumber;
             while (true) {
@@ -281,13 +302,16 @@ public class Processes {
                     System.out.println("Wrong entry");
                 }
             }
-            for (Map.Entry<Integer, String> each : teachers.entrySet()) {
+            for (Map.Entry<Integer, String> each : teachersSet) {
                 if (requestedRegistryNumber == each.getKey()) {
                     teachers.remove(requestedRegistryNumber);
+                    System.out.println("Requested " + memberType + " has been removed successfully.");
+                    mainMenu();
                 }
             }
+            System.out.println("Teacher with Registry Number : " + requestedRegistryNumber +
+                    " could not be found in the database.");
         }
-        System.out.println("Requested " + memberType + " has been removed successfully.");
         mainMenu();
     }
 }

@@ -57,7 +57,7 @@ public class Transactions {
         }
 
         char choice;
-        do {
+        while (true) {
             System.out.println();
             System.out.println("Would you like to proceed any other transaction?\nYes : Y\nNo : N");
             System.out.println();
@@ -69,7 +69,6 @@ public class Transactions {
                 exit();
             } else System.out.println("Wrong entry");
         }
-        while (true);
     }
 
     public static void withdrawMoney() {
@@ -120,7 +119,7 @@ public class Transactions {
         }
 
         char choice;
-        do {
+        while (true) {
             System.out.println();
             System.out.println("Would you like to proceed any other transaction?\nYes : Y\nNo : N");
             System.out.println();
@@ -132,7 +131,6 @@ public class Transactions {
                 exit();
             } else System.out.println("Wrong entry");
         }
-        while (true);
     }
 
     public static void depositMoney() {
@@ -163,7 +161,7 @@ public class Transactions {
         }
 
         char choice;
-        do {
+        while (true) {
             System.out.println();
             System.out.println("Would you like to proceed any other transaction?\nYes : Y\nNo : N");
             System.out.println();
@@ -175,7 +173,6 @@ public class Transactions {
                 exit();
             } else System.out.println("Wrong entry");
         }
-        while (true);
     }
 
     public static void checkuserAccountBalance() {
@@ -183,7 +180,7 @@ public class Transactions {
         System.out.println("Welcome : " + getUserName() + " " + getUserSurname() + "\nYour current balance : € " + getUserAccountBalance());
 
         char choice;
-        do {
+        while (true) {
             System.out.println();
             System.out.println("Would you like to proceed any other transaction?\nYes : Y\nNo : N");
             System.out.println();
@@ -195,7 +192,6 @@ public class Transactions {
                 exit();
             } else System.out.println("Wrong entry");
         }
-        while (true);
     }
 
     public static void viewCustomerData() {
@@ -204,7 +200,7 @@ public class Transactions {
                 "\nCustomer Number : " + getLoggedInCustomerNumber() + "\nCustomer Birthdate : " + getUserBirthDate() +
                 "\nCustomer Country : " + getUserCountry() + "\nCustomer Current Balance : € " + getUserAccountBalance());
         char choice;
-        do {
+        while (true) {
             System.out.println();
             System.out.println("Would you like to proceed any other transaction?\nYes : Y\nNo : N");
             System.out.println();
@@ -216,7 +212,6 @@ public class Transactions {
                 exit();
             } else System.out.println("Wrong entry");
         }
-        while (true);
     }
 
     public static void exit() {

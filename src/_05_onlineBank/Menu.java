@@ -26,70 +26,21 @@ public class Menu {
             }
         }
 
-        if (choice == 1) {
-            double sendingAmount;
-            System.out.println();
-            System.out.println("Welcome : " + getUserName() + " " + getUserSurname() + "\nYour current balance = " + getUserAccountBalance() + " €");
-            System.out.print("Please enter the amount which you want to transfer : ");
-            while (true) {
-                try {
-                    sendingAmount = Double.parseDouble(scan.nextLine());
-                    break;
-                } catch (Exception inputMismatchException) {
-                    System.out.println("Wrong input");
-                    System.out.print("Please enter a proper amount : ");
-                }
-            }
-            sendMoney(sendingAmount);
+        if (choice == 1) sendMoney();
 
-        } else if (choice == 2) {
-            double withdrawAmount;
-            System.out.println("Welcome : " + getUserName() + " " + getUserSurname() + "\nYour current balance = " + getUserAccountBalance() + " €");
-            System.out.println();
-            System.out.print("Please enter the amount which you want to withdraw : ");
-            while (true) {
-                try {
-                    withdrawAmount = Double.parseDouble(scan.nextLine());
-                    break;
-                } catch (Exception inputMismatchException) {
-                    System.out.println("Wrong input");
-                    System.out.println();
-                    System.out.print("Please enter a proper amount : ");
-                }
-            }
-            withdrawMoney(withdrawAmount);
+        else if (choice == 2) withdrawMoney();
 
-        } else if (choice == 3) {
-            double depositAmount;
-            System.out.println();
-            System.out.println("Welcome : " + getUserName() + " " + getUserSurname() + "\nYour current balance = " + getUserAccountBalance() + " €");
-            System.out.print("Please enter the amount which you want to deposit : ");
-            while (true) {
-                try {
-                    depositAmount = Double.parseDouble(scan.nextLine());
-                    break;
-                } catch (Exception inputMismatchException) {
-                    System.out.println("Wrong input");
-                    System.out.println();
-                    System.out.print("Please enter a proper amount : ");
-                }
-            }
-            depositMoney(depositAmount);
+        else if (choice == 3) depositMoney();
 
-        } else if (choice == 4) {
-            System.out.println();
-            checkuserAccountBalance();
+        else if (choice == 4) checkuserAccountBalance();
 
-        } else if (choice == 5) {
-            System.out.println();
-            viewCustomerData();
+        else if (choice == 5) viewCustomerData();
 
-        } else if (choice == 6) {
-            System.out.println();
-            changePassword();
-        } else if (choice == 7) {
-            exit();
-        } else {
+        else if (choice == 6) changePassword();
+
+        else if (choice == 7) exit();
+
+        else {
             System.out.println();
             System.out.println("Wrong entry");
             mainMenu();

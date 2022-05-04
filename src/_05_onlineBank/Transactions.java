@@ -256,7 +256,7 @@ public class Transactions {
                 String[] eachValue = each.getValue().split(", ");
                 if (eachValue[5].equals(password)) {
                     setUserPassword(setPassword());
-                    if(getUserPassword().equals(password)){
+                    while(getUserPassword().equals(password)){
                         System.out.println();
                         System.out.println("Your new password cannot be same with your old password. Please try again.");
                         System.out.println();

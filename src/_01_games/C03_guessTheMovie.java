@@ -35,6 +35,7 @@ public class C03_guessTheMovie {
                     System.exit(0);
                 }
             }
+
             choice--;
             String chosenmovie = film.get(choice);
             String hiddenmovie = chosenmovie.replaceAll("\\w", "*");

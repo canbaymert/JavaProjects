@@ -1,11 +1,10 @@
 package _05_rentACar;
 
 public class Car {
-    private String receivingCity;
-    private String receivingDay;
-    private double receivingHour;
-    private String deliveringDay;
-    private double deliveringHour;
+    protected static String receivingDay;
+    protected static double receivingTime;
+    protected static String deliveringDay;
+    protected static double deliveringTime;
 
     private String brand;
     private String model;
@@ -16,12 +15,11 @@ public class Car {
     public Car() {
     }
 
-    public Car(String receivingCity, String receivingDay, double receivingHour, String deliveringDay, double deliveringHour) {
-        this.receivingCity = receivingCity;
+    public Car(String receivingDay, double receivingTime, String deliveringDay, double deliveringTime) {
         this.receivingDay = receivingDay;
-        this.receivingHour = receivingHour;
+        this.receivingTime = receivingTime;
         this.deliveringDay = deliveringDay;
-        this.deliveringHour = deliveringHour;
+        this.deliveringTime = deliveringTime;
     }
 
     public Car(String brand, String model, String fuelType, String gears, double dailyPrice) {
@@ -32,44 +30,24 @@ public class Car {
         this.dailyPrice = dailyPrice;
     }
 
-    public String getReceivingCity() {
-        return receivingCity;
-    }
-
-    public void setReceivingCity(String receivingCity) {
-        this.receivingCity = receivingCity;
-    }
 
     public String getReceivingDay() {
         return receivingDay;
     }
 
-    public void setReceivingDay(String receivingDay) {
-        this.receivingDay = receivingDay;
+
+    public double getreceivingTime() {
+        return receivingTime;
     }
 
-    public double getReceivingHour() {
-        return receivingHour;
-    }
-
-    public void setReceivingHour(double receivingHour) {
-        this.receivingHour = receivingHour;
-    }
 
     public String getDeliveringDay() {
         return deliveringDay;
     }
 
-    public void setDeliveringDay(String deliveringDay) {
-        this.deliveringDay = deliveringDay;
-    }
 
-    public double getDeliveringHour() {
-        return deliveringHour;
-    }
-
-    public void setDeliveringHour(double deliveringHour) {
-        this.deliveringHour = deliveringHour;
+    public double getdeliveringTime() {
+        return deliveringTime;
     }
 
     public String getBrand() {
@@ -114,12 +92,11 @@ public class Car {
 
     @Override
     public String toString() {
-        return "Car{" +
-                "receivingCity='" + receivingCity + '\'' +
-                ", receivingDay='" + receivingDay + '\'' +
-                ", receivingHour=" + receivingHour +
+        return "Information{" +
+                "receivingDay='" + receivingDay + '\'' +
+                ", receivingTime=" + receivingTime +
                 ", deliveringDay='" + deliveringDay + '\'' +
-                ", deliveringHour=" + deliveringHour +
+                ", deliveringTime=" + deliveringTime +
                 ", brand='" + brand + '\'' +
                 ", model='" + model + '\'' +
                 ", fuelType='" + fuelType + '\'' +

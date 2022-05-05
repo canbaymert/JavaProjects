@@ -13,16 +13,70 @@ public class Transactions extends Car {
     static int totalDays;
 
     public static void carDemand() {
-        System.out.print("Please enter the city where you demand to receive the car : ");
-        String city = scan.nextLine();
-        System.out.print("Please enter the day you want to receive the car (DD.MM.YYYY) : ");
-        String receivingDay = scan.nextLine();
-        System.out.print("Please enter the time you want to receive the car (HH.MM) : ");
-        double receivingHour = Double.parseDouble(scan.nextLine());
-        System.out.print("Please enter the day you want to deliver the car (DD.MM.YYYY) : ");
-        String deliveringDay = scan.nextLine();
-        System.out.print("Please enter the time you want to receive the car (HH.MM) : ");
-        double deliveringHour = Double.parseDouble(scan.nextLine());
+
+        while (true) {
+            System.out.print("Please enter the day you want to receive the car (DD.MM.YYYY) : ");
+            receivingDay = scan.nextLine();
+            if (receivingDay.length() == 10) {
+                if (receivingDay.substring(2, 3).equals(receivingDay.substring(5, 6))) {
+                    if (receivingDay.charAt(2) == '.') {
+                        if (Integer.parseInt(receivingDay.substring(0, 2)) < 32) {
+                            if (Integer.parseInt(receivingDay.substring(3, 5)) < 13) {
+                                if (Integer.parseInt(receivingDay.substring(6)) == 2022 || Integer.parseInt(receivingDay.substring(6)) == 2023)
+                                    break;
+                                else System.out.println("You can rent a car just within 2022 and 2023 years.");
+                            } else System.out.println("Wrong date information. Please try again.");
+                        } else System.out.println("Wrong date information. Please try again.");
+                    } else System.out.println("Wrong date information. Please try again.");
+                } else System.out.println("Wrong date information. Please try again.");
+            } else System.out.println("Wrong date information. Please try again.");
+        }
+
+        while (true) {
+            System.out.print("Please enter the day you want to deliver the car (DD.MM.YYYY) : ");
+            deliveringDay = scan.nextLine();
+            if (deliveringDay.length() == 10) {
+                if (deliveringDay.substring(2, 3).equals(deliveringDay.substring(5, 6))) {
+                    if (deliveringDay.charAt(2) == '.') {
+                        if (Integer.parseInt(deliveringDay.substring(0, 2)) < 32) {
+                            if (Integer.parseInt(deliveringDay.substring(3, 5)) < 13) {
+                                if (Integer.parseInt(deliveringDay.substring(6)) == 2022 || Integer.parseInt(deliveringDay.substring(6)) == 2023)
+                                    break;
+                                else System.out.println("You can rent a car just within 2022 and 2023 years.");
+                            } else System.out.println("Wrong date information. Please try again.");
+                        } else System.out.println("Wrong date information. Please try again.");
+                    } else System.out.println("Wrong date information. Please try again.");
+                } else System.out.println("Wrong date information. Please try again.");
+            } else System.out.println("Wrong date information. Please try again.");
+        }
+
+        while (true) {
+            try {
+                System.out.print("Please enter the time you want to receive the car (HH.MM) : ");
+                receivingTime = Double.parseDouble(scan.nextLine());
+                if (receivingTime > 24) System.out.println("Wrong Entry. Please try again.");
+                else if (receivingTime < 0) System.out.println("Wrong Entry. Please try again.");
+                else if (receivingTime - (int) receivingTime > 0.60)
+                    System.out.println("Wrong Entry. Please try again.");
+                else break;
+            } catch (NumberFormatException e) {
+                System.out.println("Wrong entry");
+            }
+        }
+
+        while (true) {
+            try {
+                System.out.print("Please enter the time you want to deliver the car (HH.MM) : ");
+                deliveringTime = Double.parseDouble(scan.nextLine());
+                if (deliveringTime > 24) System.out.println("Wrong Entry. Please try again.");
+                else if (deliveringTime < 0) System.out.println("Wrong Entry. Please try again.");
+                else if (deliveringTime - (int) deliveringTime > 0.60)
+                    System.out.println("Wrong Entry. Please try again.");
+                else break;
+            } catch (NumberFormatException e) {
+                System.out.println("Wrong entry");
+            }
+        }
 
         System.out.println();
         String rDay = receivingDay.substring(0, 2);
@@ -30,15 +84,15 @@ public class Transactions extends Car {
         String rMonth = receivingDay.substring(3, 5);
         int rMonthNum = Integer.parseInt(rMonth);
         String rYear = receivingDay.substring(6);
-        int rYearNum = Integer.parseInt(rDay);
+        int rYearNum = Integer.parseInt(rYear);
         System.out.println("Receiving Date : " + rDaynum + "." + rMonthNum + "." + rYearNum);
 
-        String dDay = receivingDay.substring(0, 2); //12.04
+        String dDay = deliveringDay.substring(0, 2); //12.04
         int dDaynum = Integer.parseInt(dDay);
-        String dMonth = receivingDay.substring(3, 5);
+        String dMonth = deliveringDay.substring(3, 5);
         int dMonthNum = Integer.parseInt(dMonth);
-        String dYear = receivingDay.substring(6);
-        int dYearNum = Integer.parseInt(rDay);
+        String dYear = deliveringDay.substring(6);
+        int dYearNum = Integer.parseInt(dYear);
         System.out.println("Delivering Date: " + dDaynum + "." + dMonthNum + "." + dYearNum);
 
         System.out.println();
@@ -59,12 +113,17 @@ public class Transactions extends Car {
     }
 
     public static void wantContinue() throws InterruptedException {
-        System.out.println("Press 'Y' to continue.\nPress 'N' to quit.");
-        String choice = scan.nextLine();
-        if (choice.equalsIgnoreCase("Y")) {
-            customerInformation();
-        } else if (choice.equalsIgnoreCase("N")) {
-            cars();
+
+        while (true) {
+            System.out.println("Press 'Y' to continue.\nPress 'N' to quit.");
+            System.out.print("Your choice : ");
+            String choice = scan.nextLine();
+            if (choice.equalsIgnoreCase("Y")) {
+                customerInformation();
+            } else if (choice.equalsIgnoreCase("N")) {
+                System.out.println("Have a nice day.");
+                System.exit(0);
+            } else System.out.println("Wrong entry");
         }
     }
 
@@ -97,9 +156,22 @@ public class Transactions extends Car {
         carDemandList.add(volkswagenGasolineAutomatic);
         carDemandList.add(volkswagenGasolineManuel);
 
-        System.out.println("\n Please choose the car you want to rent : \n1 : Opel Diesel Automatic " + "\n2 : Opel Diesel Manuel \n3 : Opel Gasoline Automatic \n4 : Opel Gasoline Manuel" + "\n5 : Toyota Diesel Automatic" + "\n6 : Toyota Diesel Manuel\n7 : Toyota Gasoline Automatic" + "\n8 : Toyota Gasoline Manuel\n9 : Volkswagen Diesel Automatic\n10: Volkswagen Diesel Manuel\n11 : Volkswagen Gasoline Automatic" + "\n12 : Volkswagen Gasoline Manuel" + "\n13: Another car request");
+        System.out.println("\n Please choose the car you want to rent : \n1 : Opel Diesel Automatic " +
+                "\n2 : Opel Diesel Manuel \n3 : Opel Gasoline Automatic \n4 : Opel Gasoline Manuel" +
+                "\n5 : Toyota Diesel Automatic" + "\n6 : Toyota Diesel Manuel\n7 : Toyota Gasoline Automatic" +
+                "\n8 : Toyota Gasoline Manuel\n9 : Volkswagen Diesel Automatic\n10: Volkswagen Diesel Manuel" +
+                "\n11 : Volkswagen Gasoline Automatic" + "\n12 : Volkswagen Gasoline Manuel" +
+                "\n13 : Another car request");
         System.out.print("\nYour choice : ");
-        int choice = Integer.parseInt(scan.nextLine());
+        int choice = 0;
+        while (true) {
+            try {
+                choice = Integer.parseInt(scan.nextLine());
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Wrong entry. Please try again");
+            }
+        }
         switch (choice) {
             case 1:
                 getCar("Opel", "Astra", "Diesel", "Automatic", 150);
@@ -184,38 +256,36 @@ public class Transactions extends Car {
                 String newGearType = scan.nextLine();
                 getCar(newBrand, " " + newModel, " " + newfuelType, " " + newGearType, 250);
 
-                int totalPrice13 = totalDays * 250;
                 System.out.println();
-                System.out.println("Total Price: " + totalPrice13);
-                wantContinue();
-                break;
+                System.out.println("The car you asked is not available in our stock right now. But your request has been taken. ");
+                System.out.println("Please choose another car.");
+                cars();
             default:
                 System.out.println("Wrong Entry");
         }
-
-
     }
+
 
     public static void customerInformation() throws InterruptedException {
         System.out.println("Please enter the asked information to register.");
         String name, surname, IDNumber, age, phoneNumber;
-        do {
+        while (true) {
             System.out.print("Name : ");
             name = scan.nextLine();
             String temp = name;
             temp = temp.replaceAll("[a-zA-ZüÜıİÖöğĞşŞçÇ]", "");
             if (!temp.equals("")) System.out.println("Invalid information. Please try again.");
             else break;
-        } while (true);
-        do {
+        }
+        while (true) {
             System.out.print("Surname : ");
             surname = scan.nextLine();
             String temp = surname;
             temp = temp.replaceAll("[a-zA-ZüÜıİÖöğĞşŞçÇ]", "");
             if (!temp.equals("")) System.out.println("Invalid information. Please try again.");
             else break;
-        } while (true);
-        do {
+        }
+        while (true) {
             try {
                 System.out.print("Age : ");
                 age = scan.nextLine();
@@ -229,8 +299,8 @@ public class Transactions extends Car {
             } catch (NumberFormatException e) {
                 System.out.println("Invalid information. Please try again.");
             }
-        } while (true);
-        do {
+        }
+        while (true) {
             try {
                 System.out.print("ID number : ");
                 IDNumber = scan.nextLine();
@@ -242,9 +312,9 @@ public class Transactions extends Car {
             } catch (NumberFormatException e) {
                 System.out.println("Invalid information. Please try again.");
             }
-        } while (true);
+        }
 
-        do {
+        while (true) {
             try {
                 System.out.print("Phone Number : ");
                 phoneNumber = scan.nextLine();
@@ -257,9 +327,10 @@ public class Transactions extends Car {
             } catch (NumberFormatException e) {
                 System.out.println("Invalid information. Please try again.");
             }
-        } while (true);
+        }
 
-        System.out.println("Name : " + name + "\nSurname : " + surname + "\nAge : " + age + "\nID number : " + IDNumber + "\nPhone number : " + phoneNumber);
+        System.out.println("Name : " + name + "\nSurname : " + surname + "\nAge : " + age + "\nID number : "
+                + IDNumber + "\nPhone number : " + phoneNumber);
         paymentInformation();
         System.out.println();
     }
@@ -267,22 +338,20 @@ public class Transactions extends Car {
     public static void paymentInformation() throws InterruptedException {
 
         String creditCardNumber, CVC2Number, nameSurname;
-        do {
+        while (true) {
             try {
                 System.out.print("Please enter your Credit Card Number : ");
                 creditCardNumber = scan.nextLine();
                 String temp = creditCardNumber;
                 temp = temp.replaceAll("\\d", "");
                 if (!temp.equals("")) System.out.println("Invalid Card Number. Please try again.");
-                else if (Integer.parseInt(creditCardNumber) < 0)
-                    System.out.println("Invalid Card Number. Please try again.");
                 else if (creditCardNumber.length() != 16) System.out.println("Invalid Card Number. Please try again.");
                 else break;
             } catch (NumberFormatException e) {
                 System.out.println("Invalid Card Number. Please try again.");
             }
-        } while (true);
-        do {
+        }
+        while (true) {
             try {
                 System.out.print("Please enter CVC2 number of your Credit Card Number (3 digits) : ");
                 CVC2Number = scan.nextLine();
@@ -295,8 +364,8 @@ public class Transactions extends Car {
             } catch (NumberFormatException e) {
                 System.out.println("Invalid CVC2 Number. Please try again.");
             }
-        } while (true);
-        do {
+        }
+        while (true) {
             System.out.print("Please enter Name and Surname information with one blank between them : ");
             nameSurname = scan.nextLine();
             String temp = nameSurname;
@@ -304,14 +373,11 @@ public class Transactions extends Car {
             if (!temp.equals("")) System.out.println("Invalid information. Please try again.");
             if (!nameSurname.contains(" ")) System.out.println("Invalid information. Please try again.");
             else break;
-        } while (true);
-
+        }
         System.out.println("Your payment is being processed. Please wait...");
         Thread.sleep(3000);
         System.out.println("your payment has been successfully received.");
-        System.out.println("Have a nice day.");
+        System.out.println("Have a nice day");
+        System.exit(0);
     }
-
 }
-
-

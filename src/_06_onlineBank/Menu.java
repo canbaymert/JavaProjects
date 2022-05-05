@@ -1,8 +1,7 @@
-package _05_onlineBank;
+package _06_onlineBank;
 
-import static _05_onlineBank.Database.*;
-import static _05_onlineBank.Transactions.*;
-import static _05_onlineBank.Transactions.scan;
+import static _06_onlineBank.Transactions.*;
+import static _06_onlineBank.Transactions.scan;
 
 public class Menu {
 

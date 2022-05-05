@@ -1,11 +1,11 @@
-package _05_onlineBank;
+package _06_onlineBank;
 
 import java.util.*;
 
 
-import static _05_onlineBank.Login.bankStart;
-import static _05_onlineBank.Database.*;
-import static _05_onlineBank.Menu.*;
+import static _06_onlineBank.Login.bankStart;
+import static _06_onlineBank.Database.*;
+import static _06_onlineBank.Menu.*;
 
 
 public class Transactions {

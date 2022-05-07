@@ -22,7 +22,7 @@ public class Transactions {
                 + "   |3-INCREASE AMOUNT |              |  4-PUT TO STOCK  |   \n"
                 + "   ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯              ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯   \n"
                 + "   ____________________              ____________________   \n"
-                + "   |3-DECREASE AMOUNT |              |      6-EXIT      |   \n"
+                + "   |5-DECREASE AMOUNT |              |      6-EXIT      |   \n"
                 + "   ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯              ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯  ");
 
 

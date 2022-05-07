@@ -1,8 +1,8 @@
-package _06_onlineBank;
+package _08_onlineBank;
 
 import java.util.Scanner;
 
-import static _06_onlineBank.Database.*;
+import static _08_onlineBank.Database.*;
 
 public class Login {
     static Scanner scan = new Scanner(System.in);

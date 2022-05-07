@@ -1,9 +1,9 @@
-package _06_onlineBank;
+package _08_onlineBank;
 
 import java.util.*;
 
-import static _06_onlineBank.Login.bankStart;
-import static _06_onlineBank.Menu.mainMenu;
+import static _08_onlineBank.Login.bankStart;
+import static _08_onlineBank.Menu.mainMenu;
 
 
 public class Database {

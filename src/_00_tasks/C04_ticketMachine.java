@@ -2,7 +2,7 @@ package _00_tasks;
 
 import java.util.Scanner;
 
-public class C04_flightProject {
+public class C04_ticketMachine {
     /*
     Passenger is at City A, the distances to 3 different cities are: 500km to City B, 700km to City C, 900 km to City D.
     Price calculation:

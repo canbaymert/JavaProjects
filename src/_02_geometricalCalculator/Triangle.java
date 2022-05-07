@@ -17,7 +17,7 @@ public class Triangle extends Shape {
 
     @Override
     public String toString() {
-        return "Side 1 = " + side1 + "\nSide 2= " + side2 + "\nSide 3 = " +side3 + "\nHeight 1 = " +height1 +
+        return "Side 1 = " + side1 + "\nSide 2 = " + side2 + "\nSide 3 = " +side3 + "\nHeight 1 = " +height1 +
                 "\nTriangle Perimeter = " + calculatePerimeterTriangle() +"\nTriangle Area = " +calculateAreaTriangle();
     }
 }

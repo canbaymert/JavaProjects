@@ -1,4 +1,4 @@
-package _04_schoolManagementSystem;
+package _06_schoolManagementSystem;
 
 public class Teacher extends Member {
     private Integer registryNumber;

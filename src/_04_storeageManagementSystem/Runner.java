@@ -1,4 +1,4 @@
-package _06_storehouseManagementSystem;
+package _04_storeageManagementSystem;
 
 public class Runner extends Transactions {
 

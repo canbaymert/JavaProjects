@@ -1,4 +1,4 @@
-package _06_storehouseManagementSystem;
+package _04_storeageManagementSystem;
 
 public class Product {
     private static int productID=1000;

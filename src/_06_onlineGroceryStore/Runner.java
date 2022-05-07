@@ -1,6 +1,6 @@
-package _07_onlineGroceryStore;
+package _06_onlineGroceryStore;
 
-import static _07_onlineGroceryStore.Transactions.mainMenu;
+import static _06_onlineGroceryStore.Transactions.mainMenu;
 
 public class Runner extends Database {
     public static void main(String[] args) throws InterruptedException {

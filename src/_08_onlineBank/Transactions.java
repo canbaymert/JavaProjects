@@ -1,12 +1,11 @@
 package _08_onlineBank;
 
 import java.util.*;
-
-
-import static _08_onlineBank.Login.bankStart;
+import static _08_onlineBank.DatabaseTransactions.setPassword;
+import static _08_onlineBank.DatabaseTransactions.updateUserData;
+import static _08_onlineBank.Login.login;
 import static _08_onlineBank.Database.*;
 import static _08_onlineBank.Menu.*;
-
 
 public class Transactions {
 
@@ -238,7 +237,7 @@ public class Transactions {
                     if (choice == 0) {
                         changePassword();
                     } else {
-                        bankStart();
+                        login();
                     }
                 }
             }

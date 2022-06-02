@@ -2,12 +2,13 @@ package _08_onlineBank;
 
 import java.util.Scanner;
 
-import static _08_onlineBank.Database.*;
+import static _08_onlineBank.DatabaseTransactions.askCustomerNumber;
+import static _08_onlineBank.DatabaseTransactions.registerUser;
 
 public class Login {
     static Scanner scan = new Scanner(System.in);
 
-    public static void bankStart() {
+    public static void login() {
         System.out.println();
         System.out.println("Login with your customer number : 0\nRegister new user : 1");
         System.out.println();
@@ -27,35 +28,10 @@ public class Login {
         if (choice == 0) {
             askCustomerNumber();
         } else if (choice == 1) {
-            registeruser();
+            registerUser();
         } else {
             System.out.println("Invalid entry");
-            bankStart();
-        }
-    }
-
-    private static void askCustomerNumber() {
-        System.out.println();
-        System.out.print("Please enter your 8 digits customer number : ");
-        while (true) {
-            try {
-                setLoggedInCustomerNumber(Integer.parseInt(scan.nextLine()));
-                break;
-            } catch (Exception inputMismatchException) {
-                System.out.println("Invalid entry");
-                System.out.print("Please enter your 8 digits customer number : ");
-            }
-        }
-        if (getLoggedInCustomerNumber() > 99999999 || getLoggedInCustomerNumber() < 10000000) {
-            System.out.println("Invalid customer number, please try again.");
-            bankStart();
-        }
-
-        if (customers.containsKey(getLoggedInCustomerNumber())) {
-            askPassword();
-        } else {
-            System.out.println("Invalid customer number, please try again.");
-            bankStart();
+            login();
         }
     }
 }

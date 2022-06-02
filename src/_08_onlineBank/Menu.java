@@ -2,9 +2,7 @@ package _08_onlineBank;
 
 import static _08_onlineBank.Transactions.*;
 import static _08_onlineBank.Transactions.scan;
-
 public class Menu {
-
 
     public static void mainMenu() {
         System.out.println();

@@ -3,12 +3,12 @@ package _03_coffeeMachine;
 import java.util.*;
 
 
-public class Body extends Coffee{
+public class Transactions extends Coffee{
     static Map<Integer, String> menu = new HashMap<>();
     static Scanner scan = new Scanner(System.in);
 
 
-    public void prepareMenu() throws InterruptedException {
+    public void Menu() throws InterruptedException {
         Coffee coffee1 = new Coffee();
         coffee1.setCoffeeName("Espresso");
         coffee1.setCoffeeNo(1);

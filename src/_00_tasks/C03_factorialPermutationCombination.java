@@ -10,10 +10,17 @@ public class C03_factorialPermutationCombination {
             try {
                 System.out.print("Combination of n and r = C(n,r)\nPermutation of n and r = P(n,r)\nn : ");
                 n = scan.nextInt();
+                if(n>23) {
+                    System.out.println("Number is too big to calculate");
+                    continue;
+                }
                 System.out.print("Combination of n and r = C(n,r)\nPermutation of n and r = P(n,r)\nr : ");
                 r = scan.nextInt();
                 if (r<0) System.out.println("Please enter a positive number");
                 if (r > n) System.out.println("The value of r cannot be greater than the value of n.");
+                if (r>23) {
+                    System.out.println("Number is too big to calculate");
+                }
                 else break;
             } catch (Exception e) {
                 System.out.println("Please enter a positive number.");

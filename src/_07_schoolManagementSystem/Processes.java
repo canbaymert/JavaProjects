@@ -2,10 +2,12 @@ package _07_schoolManagementSystem;
 
 import java.util.*;
 
+import static _07_schoolManagementSystem.Menu.mainMenu;
+import static _07_schoolManagementSystem.Menu.memberType;
+
 public class Processes {
     static Map<Integer, String> menu = new HashMap<>();
     static Scanner scan = new Scanner(System.in);
-    static String memberType;
     static Map<Integer, String> teachers = new HashMap<>();
     static Map<Integer, String> students = new HashMap<>();
 
@@ -38,34 +40,7 @@ public class Processes {
         System.out.println("================================================");
     }
 
-
-    public static void mainMenu() {
-        System.out.println();
-        System.out.println("Please select a transaction.");
-        System.out.println("1-Student transactions\n2-Teacher transactions\nQ-Exit");
-        System.out.println();
-        System.out.print("Your choice : ");
-        String choice = scan.nextLine().toUpperCase();
-        switch (choice) {
-            case "1":
-                memberType = "Student";
-                transactions();
-                break;
-            case "2":
-                memberType = "Teacher";
-                transactions();
-                break;
-            case "Q":
-                exit();
-                break;
-            default:
-                System.out.println("Wrong entry");
-                mainMenu();
-                break;
-        }
-    }
-
-    private static void exit() {
+    protected static void exit() {
         System.out.println();
         System.out.println("Have a nice day.");
         System.exit(0);

@@ -1,6 +1,6 @@
 package _07_schoolManagementSystem;
 
-public class Teacher extends Member {
+public class Teacher extends Person {
     private Integer registryNumber;
     private String branch;
 

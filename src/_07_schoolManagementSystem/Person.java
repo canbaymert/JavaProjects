@@ -1,6 +1,6 @@
 package _07_schoolManagementSystem;
 
-public class Member {
+public class Person {
     private String nameSurname;
     private String IDNo;
     private int age;

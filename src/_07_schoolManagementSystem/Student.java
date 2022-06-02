@@ -1,6 +1,6 @@
 package _07_schoolManagementSystem;
 
-public class Student extends Member {
+public class Student extends Person {
     private Integer studentNumber;
     private Integer studentClass;
 

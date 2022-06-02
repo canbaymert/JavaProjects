@@ -25,7 +25,7 @@ public class Login {
             }
         }
         if (choice == 0) {
-            loginwithCustomerNumber();
+            askCustomerNumber();
         } else if (choice == 1) {
             registeruser();
         } else {
@@ -34,7 +34,7 @@ public class Login {
         }
     }
 
-    private static void loginwithCustomerNumber() {
+    private static void askCustomerNumber() {
         System.out.println();
         System.out.print("Please enter your 8 digits customer number : ");
         while (true) {

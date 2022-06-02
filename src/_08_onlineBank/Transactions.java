@@ -12,6 +12,22 @@ public class Transactions {
 
     public static Scanner scan = new Scanner(System.in);
 
+    public static void wantContinue() {
+        char choice;
+        while (true) {
+            System.out.println();
+            System.out.println("Would you like to proceed any other transaction?\nYes : Y\nNo : N");
+            System.out.println();
+            System.out.print("Your choice : ");
+            choice = scan.nextLine().toUpperCase(Locale.ROOT).charAt(0);
+            if (choice == 'Y') mainMenu();
+            else if (choice == 'N') {
+                System.out.println();
+                exit();
+            } else System.out.println("Wrong entry");
+        }
+    }
+
     public static void sendMoney() {
         double sendingAmount;
         System.out.println();
@@ -30,11 +46,10 @@ public class Transactions {
             System.out.println();
             System.out.println("Sending amount should be greater than 0. Please try again.");
             sendMoney();
-        }
-        else if (sendingAmount <= getUserAccountBalance()) {
+        } else if (sendingAmount <= getUserAccountBalance()) {
             String iban = getIban();
             setUserAccountBalance(getUserAccountBalance() - sendingAmount);
-            System.out.println("€ "+sendingAmount + " has been sent to " + iban + " successfully.");
+            System.out.println("€ " + sendingAmount + " has been sent to " + iban + " successfully.");
             System.out.println("New balance of your account  : € " + getUserAccountBalance());
             updateUserData();
         } else {
@@ -55,26 +70,13 @@ public class Transactions {
             }
             sendMoney();
         }
-
-        char choice;
-        while (true) {
-            System.out.println();
-            System.out.println("Would you like to proceed any other transaction?\nYes : Y\nNo : N");
-            System.out.println();
-            System.out.print("Your choice : ");
-            choice = scan.nextLine().toUpperCase(Locale.ROOT).charAt(0);
-            if (choice == 'Y') mainMenu();
-            else if (choice == 'N') {
-                System.out.println();
-                exit();
-            } else System.out.println("Wrong entry");
-        }
+        wantContinue();
     }
 
     public static void withdrawMoney() {
         double withdrawAmount;
         System.out.println();
-        System.out.println("Welcome : " + getUserName() + " " + getUserSurname() + "\nYour current balance : € "+ getUserAccountBalance()  );
+        System.out.println("Welcome : " + getUserName() + " " + getUserSurname() + "\nYour current balance : € " + getUserAccountBalance());
         System.out.println();
         System.out.print("Please enter the amount which you want to withdraw (€) : ");
         while (true) {
@@ -96,7 +98,7 @@ public class Transactions {
         } else if (withdrawAmount <= getUserAccountBalance()) {
             setUserAccountBalance(getUserAccountBalance() - withdrawAmount);
             System.out.println();
-            System.out.println("€ "+withdrawAmount + " has been withdrawn successfully.");
+            System.out.println("€ " + withdrawAmount + " has been withdrawn successfully.");
             System.out.println("New balance of your account : € " + getUserAccountBalance());
             updateUserData();
         } else {
@@ -117,26 +119,13 @@ public class Transactions {
             }
             withdrawMoney();
         }
-
-        char choice;
-        while (true) {
-            System.out.println();
-            System.out.println("Would you like to proceed any other transaction?\nYes : Y\nNo : N");
-            System.out.println();
-            System.out.print("Your choice : ");
-            choice = scan.nextLine().toUpperCase(Locale.ROOT).charAt(0);
-            if (choice == 'Y') mainMenu();
-            else if (choice == 'N') {
-                System.out.println();
-                exit();
-            } else System.out.println("Wrong entry");
-        }
+        wantContinue();
     }
 
     public static void depositMoney() {
         double depositAmount;
         System.out.println();
-        System.out.println("Welcome : " + getUserName() + " " + getUserSurname() + "\nYour current balance : € " + getUserAccountBalance() );
+        System.out.println("Welcome : " + getUserName() + " " + getUserSurname() + "\nYour current balance : € " + getUserAccountBalance());
         System.out.print("Please enter the amount which you want to deposit (€) : ");
         while (true) {
             try {
@@ -155,43 +144,17 @@ public class Transactions {
         } else {
             setUserAccountBalance(getUserAccountBalance() + depositAmount);
             System.out.println();
-            System.out.println("€ "+depositAmount + " has been deposited successfully.");
+            System.out.println("€ " + depositAmount + " has been deposited successfully.");
             System.out.println("New balance of your account : € " + getUserAccountBalance());
             updateUserData();
         }
-
-        char choice;
-        while (true) {
-            System.out.println();
-            System.out.println("Would you like to proceed any other transaction?\nYes : Y\nNo : N");
-            System.out.println();
-            System.out.print("Your choice : ");
-            choice = scan.nextLine().toUpperCase(Locale.ROOT).charAt(0);
-            if (choice == 'Y') mainMenu();
-            else if (choice == 'N') {
-                System.out.println();
-                exit();
-            } else System.out.println("Wrong entry");
-        }
+        wantContinue();
     }
 
     public static void checkuserAccountBalance() {
         System.out.println();
         System.out.println("Welcome : " + getUserName() + " " + getUserSurname() + "\nYour current balance : € " + getUserAccountBalance());
-
-        char choice;
-        while (true) {
-            System.out.println();
-            System.out.println("Would you like to proceed any other transaction?\nYes : Y\nNo : N");
-            System.out.println();
-            System.out.print("Your choice : ");
-            choice = scan.nextLine().toUpperCase(Locale.ROOT).charAt(0);
-            if (choice == 'Y') mainMenu();
-            else if (choice == 'N') {
-                System.out.println();
-                exit();
-            } else System.out.println("Wrong entry");
-        }
+        wantContinue();
     }
 
     public static void viewCustomerData() {
@@ -199,19 +162,7 @@ public class Transactions {
         System.out.println("Customer Name : " + getUserName() + "\nCustomer Surname : " + getUserSurname() +
                 "\nCustomer Number : " + getLoggedInCustomerNumber() + "\nCustomer Birthdate : " + getUserBirthDate() +
                 "\nCustomer Country : " + getUserCountry() + "\nCustomer Current Balance : € " + getUserAccountBalance());
-        char choice;
-        while (true) {
-            System.out.println();
-            System.out.println("Would you like to proceed any other transaction?\nYes : Y\nNo : N");
-            System.out.println();
-            System.out.print("Your choice : ");
-            choice = scan.nextLine().toUpperCase(Locale.ROOT).charAt(0);
-            if (choice == 'Y') mainMenu();
-            else if (choice == 'N') {
-                System.out.println();
-                exit();
-            } else System.out.println("Wrong entry");
-        }
+        wantContinue();
     }
 
     public static void exit() {
@@ -251,7 +202,7 @@ public class Transactions {
                 String[] eachValue = each.getValue().split(", ");
                 if (eachValue[5].equals(password)) {
                     setUserPassword(setPassword());
-                    while(getUserPassword().equals(password)){
+                    while (getUserPassword().equals(password)) {
                         System.out.println();
                         System.out.println("Your new password cannot be same with your old password. Please try again.");
                         System.out.println();

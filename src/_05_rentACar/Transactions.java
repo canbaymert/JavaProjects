@@ -109,7 +109,13 @@ public class Transactions extends Car {
     }
 
     public static void getCar(String brand, String model, String fuelType, String gears, Integer dailyPrice) {
-        carDemandList.stream().filter(t -> t.getBrand().equalsIgnoreCase(brand) && t.getModel().equalsIgnoreCase(model) && t.getFuelType().equalsIgnoreCase(fuelType) && t.getGears().equalsIgnoreCase(gears)).forEach(System.out::println);
+        carDemandList.stream()
+                .filter(t -> t.getBrand()
+                        .equalsIgnoreCase(brand) && t.getModel()
+                        .equalsIgnoreCase(model) && t.getFuelType()
+                        .equalsIgnoreCase(fuelType) && t.getGears()
+                        .equalsIgnoreCase(gears))
+                .forEach(System.out::println);
     }
 
     public static void wantContinue() throws InterruptedException {
